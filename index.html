@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>📣 Bizning 8-A —   Sinf! | Ta'lim showcase</title>
+  <meta name="description" content="8-A sinfi — rang-barang, iqtidorli va do'stona. Ushbu sahifa maktabda hamma hayratda qolishi uchun maxsus tayyorlandi." />
+
+  <!-- Fonts (Google) - optional; remove if needed -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Palette+Mosaic&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f6fbff;
+      --card:#ffffff;
+      --muted:#5b6b77;
+      --primary:#155e75; /* deep cyan */
+      --accent:#ff6b6b;
+      --accent2:#f59e0b;
+      --glass: rgba(255,255,255,0.7);
+      --glass-2: rgba(255,255,255,0.85);
+      --radius:18px;
+      --shadow: 0 18px 50px rgba(15,23,42,0.12);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:
+      radial-gradient(1200px 600px at -10% 10%, #e6f7ff 0%, transparent 18%),
+      linear-gradient(180deg,#f8fbff 0%, #ffffff 60%); color:#07203a;}
+    a{color:inherit}
+    .container{max-width:1180px;margin:28px auto;padding:20px}
+    /* HEADER */
+    header{display:flex;align-items:center;gap:18px}
+    .brand{
+      display:flex;align-items:center;gap:12px;
+      background:linear-gradient(135deg,#ffffff,#f0f9ff);
+      padding:10px 14px;border-radius:14px;box-shadow:var(--shadow)
+    }
+    .logo{
+      width:76px;height:76px;border-radius:14px;
+      background:linear-gradient(135deg,#1e90ff,#06b6d4);
+      display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:22px;
+      box-shadow:0 10px 30px rgba(6,95,170,0.12);
+    }
+    h1{margin:0;font-size:1.7rem;line-height:1.05}
+    p.lead{margin:6px 0 0;color:var(--muted)}
+
+    /* hero */
+    .hero{margin-top:18px;display:grid;grid-template-columns:1fr 420px;gap:22px;align-items:start}
+    .hero-card{
+      background:linear-gradient(180deg,rgba(255,255,255,0.9),#ffffff);
+      border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);
+    }
+
+    /* Big heading area */
+    .hero-head{display:flex;flex-direction:column;gap:12px}
+    .tag{display:inline-block;padding:8px 12px;border-radius:999px;background:linear-gradient(90deg,#fef3c7,#fee2e2);font-weight:800;color:#b91c1c}
+    .big-title{font-family:'Palette Mosaic', Inter, system-ui;font-size:2.4rem;margin:0;color:#052f4a}
+    .subtitle{color:var(--muted)}
+
+    /* flag image */
+    .flag-frame{border-radius:14px;overflow:hidden;border:6px solid rgba(255,255,255,0.7);box-shadow:0 18px 45px rgba(6,95,170,0.08);background:#fff;margin-top:8px;position:relative}
+    .flag-frame img{display:block;width:100%;height:auto;transform-origin:center;animation:flagWave 6s ease-in-out infinite}
+
+    @keyframes flagWave{
+      0%{transform:skewY(0deg) translateY(0)}
+      25%{transform:skewY(1.8deg) translateY(-6px)}
+      50%{transform:skewY(0deg) translateY(0)}
+      75%{transform:skewY(-1.6deg) translateY(6px)}
+      100%{transform:skewY(0deg) translateY(0)}
+    }
+
+    /* accent buttons */
+    .controls{display:flex;gap:10px;margin-top:12px}
+    .btn{padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,var(--primary),#0ea5a3);color:white;font-weight:700;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(6,95,170,0.12)}
+    .btn.secondary{background:linear-gradient(90deg,#ff7a7a,#ffb86b);}
+
+    /* right column quick facts */
+    .facts{background:linear-gradient(180deg,#fff,#fbffff);padding:16px;border-radius:14px;box-shadow:0 10px 30px rgba(8,20,30,0.04)}
+    .facts h3{margin:0 0 10px}
+    .fact-list{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .fact{background:linear-gradient(90deg,#eff6ff,#f7fff5);padding:10px;border-radius:12px;font-weight:700;color:#0b3b45;text-align:center}
+
+    /* sections */
+    section{margin-top:20px}
+    .card{background:var(--card);padding:18px;border-radius:14px;box-shadow:var(--shadow)}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .feature{padding:14px;border-radius:12px;background:linear-gradient(180deg,#fff,#f8fbff);text-align:center}
+    .feature h4{margin:8px 0 6px}
+
+    /* gallery slider */
+    .gallery{position:relative;overflow:hidden;border-radius:12px}
+    .slides{display:flex;transition:transform .6s cubic-bezier(.2,.9,.2,1)}
+    .slide{min-width:100%;display:block}
+    .gallery-controls{display:flex;gap:8px;justify-content:center;margin-top:8px}
+
+    /* quiz block */
+    .quiz .options{display:grid;gap:10px;margin-top:10px}
+    .option{background:linear-gradient(90deg,#fff,#fbfff7);padding:12px;border-radius:12px;cursor:pointer;border:2px solid transparent;font-weight:700;transition:all .18s ease}
+    .option:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(2,6,23,0.06)}
+    .option.correct{border-color:rgba(34,197,94,0.9);background:#ecfdf5}
+    .option.wrong{border-color:rgba(239,68,68,0.9);background:#fff1f2}
+
+    /* testimonials */
+    .testimonial{display:flex;gap:12px;align-items:center}
+    .avatar{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#fff,#f0f8ff);display:flex;align-items:center;justify-content:center;font-weight:800}
+
+    /* confetti canvas */
+    #confetti{position:fixed;left:0;top:0;pointer-events:none;width:100%;height:100%;z-index:9999}
+
+    /* print */
+    @media print{
+      body{background:white}
+      .btn, .controls, header, #confetti{display:none !important}
+      .container{max-width:100%;padding:0}
+      .card, .hero-card{box-shadow:none;border-radius:0}
+    }
+
+    /* responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;gap:12px}
+      .grid-3{grid-template-columns:1fr}
+      .fact-list{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <canvas id="confetti"></canvas>
+
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">8-A</div>
+        <div>
+          <h1>8-A — Bizning eng zoʻr sinf!</h1>
+          <p class="lead">Iqtidor, mehr-muhabbat va fantastik gʻayrat — hammasi shu yerdagina.</p>
+        </div>
+      </div>
+      <div style="margin-left:auto;display:flex;gap:10px;align-items:center">
+        <button class="btn" id="printBtn" title="Print sahifa">🖨️ Chop et</button>
+        <button class="btn secondary" id="downloadPdf" title="Export PDF (brauzer yordamida)">📁 Yuklab olish</button>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-card">
+        <div class="hero-head">
+          <div style="display:flex;gap:12px;align-items:center">
+            <div class="tag">Sinf loyihasi</div>
+            <div style="font-weight:800;color:var(--primary);">Maktabdagi eng yorqin sahifa</div>
+          </div>
+
+          <h2 class="big-title">8-A — Iqtidorli, Doʻstona va Yuksalishga intiluvchilar</h2>
+          <p class="subtitle">Bu sahifa sinfdoshlaringni hayratda qoldirishi, oʻqituvchilar yoqtirishi va maktab festivalida e'tiborni tortishi uchun maxsus tayyorlandi.</p>
+
+          <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
+            <button class="btn" id="cheerBtn">🎉 Sinfni Rag'batlantirish (Confetti)</button>
+            <button class="btn secondary" id="anthemToggle">🎵 Madhiyani yoqish</button>
+          </div>
+        </div>
+
+        <div class="flag-frame" style="margin-top:16px">
+          <!-- Replaced SVG with image; local replacement recommended for offline use -->
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Flag_of_Uzbekistan.svg" alt="Oʻzbekiston bayrogʻi">
+        </div>
+
+        <div style="display:flex;gap:12px;margin-top:12px">
+          <button class="btn" id="joinBtn">📣 Guruhga qoʻshiling</button>
+          <button class="btn secondary" id="galleryOpen">🖼️ Galereyani koʻrish</button>
+        </div>
+
+        <p style="margin-top:12px;color:var(--muted);font-weight:600">Sahifa xususiyatlari: katta banner, slayder, viktorina, bosib chiqarish & yuklab olish, konfetti va fon musiqasi.</p>
+      </div>
+
+      <aside class="facts">
+        <h3>Tez faktlar</h3>
+        <div class="fact-list">
+          <div class="fact">Sinf: 8-A</div>
+          <div class="fact">O'quvchilar: 22</div>
+          <div class="fact">O'qtuvchi:Mirzarahimova Zilolahon</div>
+          <div class="fact">Yaratilgan: 2025</div>
+        </div>
+
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;gap:8px;align-items:center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Flag_of_Uzbekistan.svg" alt="flag" style="width:48px;height:32px;object-fit:cover;border-radius:6px">
+            <div>
+              <div style="font-weight:800">Milliy ruh</div>
+              <div style="color:var(--muted);font-size:13px">Bayroq va tarix — bizning kuchimiz.</div>
+            </div>
+          </div>
+
+          <button class="btn" id="praiseBtn">👏 Do'stlaringni hayratda qoldir</button>
+        </div>
+      </aside>
+    </div>
+
+    <!-- FEATURES -->
+    <section class="card" aria-label="Sinf haqida">
+      <h3>Biz haqimizda</h3>
+      <p style="color:var(--muted)">8-A — bilimli, ijodkor va jamoaviy ishlarga tayyor sinf. Biz loyihalar, sport va san'atda faol qatnashamiz.</p>
+
+      <div class="grid-3" style="margin-top:14px">
+        <div class="feature">
+          <div style="font-size:34px">🏆</div>
+          <h4>Faol jamoa</h4>
+          <p style="color:var(--muted)">Maktab tadbirlari va musobaqalarda doimo faol ishtirok etamiz.</p>
+        </div>
+        <div class="feature">
+          <div style="font-size:34px">🎨</div>
+          <h4>Ijodkor o'quvchilar</h4>
+          <p style="color:var(--muted)">San'at, dizayn va loyiha ishlari bizning kuchimiz.</p>
+        </div>
+        <div class="feature">
+          <div style="font-size:34px">🔬</div>
+          <h4>Ilm-fan va gʻoyalar</h4>
+          <p style="color:var(--muted)">FAN loyihalari va tajribalar — bizga yoqadi.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section style="margin-top:18px">
+      <div class="card">
+        <h3>Rasm galereyasi</h3>
+        <div class="gallery" id="gallery" style="margin-top:12px">
+          <div class="slides" id="slides">
+            <img class="slide" src="./images/photo_2025-11-01_19-54-43.jpg" alt="Class Activity 1">
+            <img class="slide" src="./images/photo_2025-11-01_20-00-18.jpg" alt="Class Activity 2">
+            <img class="slide" src="./images/photo_2025-11-01_20-01-13.jpg" alt="Class Activity 3">
+          </div>
+        </div>
+        <div class="gallery-controls" style="margin-top:10px">
+          <button class="btn" id="prevSlide">⬅️ Oldingi</button>
+          <button class="btn" id="nextSlide">Keyingi ➡️</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section style="margin-top:18px">
+      <div class="card quiz" id="quizCard">
+        <h3>Viktorina — o'quvchilar uchun</h3>
+        <p style="color:var(--muted)">Bayroq va sinf haqidagi savolga javob bering.</p>
+        <div class="options" id="quizOptions" style="margin-top:10px">
+          <div class="option" data-correct="false">Bayroqdagi qizil chiziqlar tinchlikni bildiradi</div>
+          <div class="option" data-correct="true">Bayroqdagi yashil rang tabiatni bildiradi</div>
+          <div class="option" data-correct="false">Yulduzlar soni 10 ta</div>
+          <div class="option" data-correct="false">Bayroq rangi qora va oqdan iborat</div>
+        </div>
+        <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+          <button class="btn" id="nextQuestion">🔁 Keyingi savol</button>
+          <div id="quizResult" style="font-weight:800;margin-left:8px"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section style="margin-top:18px">
+      <div class="card">
+        <h3>Sinfdoshlar nima deydi</h3>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:12px">
+          <div class="testimonial">
+            <div class="avatar">S</div>
+            <div>
+              <div style="font-weight:800">Sarvinoz</div>
+              <div style="color:var(--muted)">"8-A dagi loyihamiz barcha o'qituvchilarni lol qoldirdi!"</div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="avatar">B</div>
+            <div>
+              <div style="font-weight:800">Behruz</div>
+              <div style="color:var(--muted)">"Har kuni sinfga kelishni intiqlik bilan kutaman."</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer style="margin-top:20px;text-align:center;color:var(--muted)">
+      © 2025 8-A sinfi — Maktab uchun ijodiy sahifa. 
+  </div>
+
+  <!-- Background anthem (public sample) - replace with your own if needed -->
+  <audio id="anthem" loop src="https://upload.wikimedia.org/wikipedia/commons/transcoded/0/0a/State_Anthem_of_Uzbekistan.ogg/State_Anthem_of_Uzbekistan.ogg.mp3"></audio>
+
+  <script>
+    // ---------- Confetti (simple) ----------
+    (function(){
+      const canvas = document.getElementById('confetti');
+      const ctx = canvas.getContext('2d');
+      let W = canvas.width = innerWidth;
+      let H = canvas.height = innerHeight;
+      window.addEventListener('resize', ()=>{ W=canvas.width=innerWidth; H=canvas.height=innerHeight; });
+
+      function random(min,max){return Math.random()*(max-min)+min}
+      const particles = [];
+      function makeConfetti(x,y){
+        for(let i=0;i<120;i++){
+          particles.push({
+            x: x || W/2,
+            y: y || H/3,
+            vx: random(-8,8),
+            vy: random(-12, -2),
+            size: random(6,14),
+            rot: random(0,360),
+            vr: random(-8,8),
+            color: ['#ff6b6b','#f59e0b','#06b6d4','#2bb24c','#7c3aed'][Math.floor(random(0,5))]
+          });
+        }
+      }
+      function update(){
+        ctx.clearRect(0,0,W,H);
+        for(let i=particles.length-1;i>=0;i--){
+          const p = particles[i];
+          p.vy += 0.45; p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+          ctx.save();
+          ctx.translate(p.x,p.y);
+          ctx.rotate(p.rot*Math.PI/180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size*0.6);
+          ctx.restore();
+          if(p.y > H + 50) particles.splice(i,1);
+        }
+        requestAnimationFrame(update);
+      }
+      update();
+
+      // trigger
+      document.getElementById('cheerBtn').addEventListener('click', ()=>{
+        makeConfetti();
+        // small audio ding
+        const a = new Audio('https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg');
+        a.volume = 0.6; a.play();
+      });
+
+      document.getElementById('praiseBtn').addEventListener('click', ()=>{
+        makeConfetti(Math.random()*W, Math.random()*H/2);
+      });
+    })();
+
+    // ---------- Gallery slider ----------
+    (function(){
+      const slides = document.getElementById('slides');
+      const imgs = slides.querySelectorAll('.slide');
+      let idx = 0;
+      function show(i){
+        idx = (i + imgs.length) % imgs.length;
+        slides.style.transform = `translateX(${-idx*100}%)`;
+      }
+      document.getElementById('prevSlide').addEventListener('click', ()=> show(idx-1));
+      document.getElementById('nextSlide').addEventListener('click', ()=> show(idx+1));
+      // Auto-play
+      setInterval(()=> show(idx+1), 6000);
+      document.getElementById('galleryOpen').addEventListener('click', ()=> {
+        window.scrollTo({top: document.getElementById('gallery').offsetTop - 20, behavior:'smooth'});
+      });
+    })();
+
+    // ---------- Quiz logic ----------
+    (function(){
+      const opts = document.querySelectorAll('#quizOptions .option');
+      const result = document.getElementById('quizResult');
+      function clear(){ opts.forEach(o=>{ o.classList.remove('correct','wrong'); }); result.textContent=''; }
+      opts.forEach(o=>{
+        o.addEventListener('click', ()=>{
+          clear();
+          const ok = o.dataset.correct === 'true';
+          if(ok){ o.classList.add('correct'); result.textContent = 'Toʻgʻri! ✅'; 
+            // small cheering
+            const snd = new Audio('https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg'); snd.volume = 0.5; snd.play();
+          } else { o.classList.add('wrong'); result.textContent = 'Notoʻgʻri. ❌'; }
+        });
+      });
+      document.getElementById('nextQuestion').addEventListener('click', ()=>{
+        clear();
+        // simple shuffle of options text (demo)
+        const parent = document.getElementById('quizOptions');
+        for(let i = parent.children.length; i>=0; i--){
+          parent.appendChild(parent.children[Math.random()*i|0]);
+        }
+      });
+    })();
+
+    // ---------- Anthem toggle ----------
+    (function(){
+      const anthem = document.getElementById('anthem');
+      const btn = document.getElementById('anthemToggle');
+      btn.addEventListener('click', ()=>{
+        if(anthem.paused){ anthem.volume = 0.6; anthem.play(); btn.textContent = '🔇 Madhiyani o\'chir'; }
+        else { anthem.pause(); btn.textContent = '🎵 Madhiyani yoqish'; }
+      });
+    })();
+
+    // ---------- Print & Download ----------
+    (function(){
+      document.getElementById('printBtn').addEventListener('click', ()=> window.print());
+      document.getElementById('downloadPdf').addEventListener('click', ()=>{
+        alert('Brauzeringizda "Print" -> "Save as PDF" funksiyasini tanlab PDF sifatida saqlashingiz mumkin.');
+        window.print();
+      });
+    })();
+
+    // ---------- Fancy join button (mock) ----------
+    document.getElementById('joinBtn').addEventListener('click', ()=>{
+      const name = prompt("Ismingizni kiriting (sinf roʻyxatiga qoʻshamiz):");
+      if(name){
+        // brief praise animation & confetti
+        document.getElementById('cheerBtn').click();
+        alert(`Rahmat, ${name}! Endi siz 8-A ning rasmiy a'zosiz — sizni sinf do'stlaringiz maqtaydi 🎉`);
+      }
+    });
+
+    // ---------- small UX extras ----------
+    // keyboard: press C for confetti
+    window.addEventListener('keydown', (e)=>{
+      if(e.key.toLowerCase() === 'c'){ document.getElementById('cheerBtn').click(); }
+    });
+
+    // disable accidental text selection during drag
+    document.addEventListener('selectstart', function(e){ /* allow normally */ });
+  </script>
+</body>
+</html>
